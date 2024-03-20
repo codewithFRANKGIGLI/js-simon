@@ -29,25 +29,22 @@ setTimeout(function() {
     checkUserInput(numbersArray);
 }, 3500);
 
-
 // Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
 
 // funzione che verifica i numeri inseriti
 function checkUserInput(numbersArray) {
     let correctNumbers = 0;
     let totalNumbers = 0;
-  
-    while (correctNumbers < numbersArray.length && totalNumbers < 5) { // limite di 5 tentativi
-        const userGuess = parseInt(prompt(`Inserisci un numero della sequenza: (con -1 esci)`));
-    
+    const correctNumbersArray = [];
+    for(let i = 0; i < numbersArray.length; i++) { 
+        const userGuess = parseInt(prompt(`Inserisci un numero della sequenza: (con -1 esci)`));    
         if (userGuess === -1) {
             break;
         }
-    
-        if (numbersArray.includes(userGuess)) {
+        if (numbersArray.includes(userGuess) && !correctNumbersArray.includes(userGuess)) {
+            correctNumbersArray.push(userGuess);
             correctNumbers++;
         }
-  
         totalNumbers++;
     }
     // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
