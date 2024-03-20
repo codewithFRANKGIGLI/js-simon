@@ -18,14 +18,16 @@ function displayNumbersArray(numbersArray) {
     message.textContent = `Lista numeri: ${numbersArray.join(', ')}`;
     container.appendChild(message);
   
-    // lo rimuovo dopo 30 sec
-    setTimeout(() => {
-        container.removeChild(message);
-    }, 30000);
+    // lo rimuovo dopo 30 sec, per testare uso 3 sec
+    setTimeout(function() {
+        container.innerHTML ='';
+    }, 3000);
 }
-// chiamo la funzione e il suo argomento
+// chiamo la funzione e il suo argomento e il setTimeout del prompt con 0.5 sec di differenza
 displayNumbersArray(numbersArray);
-// Fino qua tutto ok. devo chiamare ora la funzione checkUserInput dopo i 30 sec. come?
+setTimeout(function() {
+    checkUserInput(numbersArray);
+}, 3500);
 
 
 // Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
